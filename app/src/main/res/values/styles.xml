@@ -19,6 +19,10 @@
         <item name="android:statusBarColor">@color/colorPrimary</item>
     </style>
 
+    <style name="FirebaseLoginTheme" parent="FirebaseUI">
+        <item name="android:windowBackground">@color/lightGray</item>
+    </style>
+
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
