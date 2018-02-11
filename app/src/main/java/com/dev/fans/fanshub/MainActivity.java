@@ -11,9 +11,11 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
@@ -34,6 +36,10 @@ public class MainActivity extends AppCompatActivity
     private FirebaseAuth mFirebaseAuth;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
 
+    private NavigationView navigationView;
+    private View header;
+    private TextView username, userrole, useremail;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +48,7 @@ public class MainActivity extends AppCompatActivity
 
         //intialize firebase components
         mFirebaseAuth = FirebaseAuth.getInstance();
+
 
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -66,6 +73,14 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        //for updating the navigation drawer user data
+        navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+        header = navigationView.getHeaderView(0);
+        username = header.findViewById(R.id.username_tv);
+        userrole = header.findViewById(R.id.userrole_tv);
+        useremail = header.findViewById(R.id.useremail_tv);
+
         //firebase authentication
         mAuthStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -75,6 +90,7 @@ public class MainActivity extends AppCompatActivity
                     // User is signed in
 //                    Toast.makeText(MainActivity.this, "Welcome fan!", Toast.LENGTH_SHORT).show();
                     onSignedInInitialize(user);
+                    Log.i(TAG, "user signed in");
                 } else {
                     // User is signed out
                     onSignedOutCleanup();
@@ -89,6 +105,8 @@ public class MainActivity extends AppCompatActivity
                                             new AuthUI.IdpConfig.GoogleBuilder().build()))
                                     .build(),
                             RC_SIGN_IN);
+
+                    Log.i(TAG, "user signed out");
                 }
             }
         };
@@ -186,6 +204,10 @@ public class MainActivity extends AppCompatActivity
     }
 
     void onSignedInInitialize(FirebaseUser user) {
+        username.setText(user.getDisplayName());
+        useremail.setText(user.getEmail());
+        //TODO:update user role from the database
+        userrole.setText(R.string.userrole);
     }
 
     void onSignedOutCleanup() {
