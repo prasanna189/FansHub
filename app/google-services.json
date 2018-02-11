@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "715962022827",
+    "firebase_url": "https://fanshub-fcca2.firebaseio.com",
+    "project_id": "fanshub-fcca2",
+    "storage_bucket": "fanshub-fcca2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:715962022827:android:d0792e7fce519547",
+        "android_client_info": {
+          "package_name": "com.dev.fans.fanshub"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "715962022827-cjohg93sf4phaqf1fiiv9rl9c8rvctfq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dev.fans.fanshub",
+            "certificate_hash": "58a36344952aa7af4d15380a06f4a76f5f80c267"
+          }
+        },
+        {
+          "client_id": "715962022827-76hrjvl6523pn96m15a1l2d4pne9e1je.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJ1UeSzSiZEn_Ab86_U0dMzMA9GpB0-YI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "715962022827-76hrjvl6523pn96m15a1l2d4pne9e1je.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
