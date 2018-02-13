@@ -8,4 +8,5 @@
     <string name="username">fan name</string>
     <string name="userrole">fan</string>
     <string name="useremail">fan@fan.com</string>
+    <string name="send_feedback">Send Feedback</string>
 </resources>
