@@ -8,8 +8,14 @@
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/action_logout"
+        android:id="@+id/action_showversion"
         android:orderInCategory="101"
+        android:title="@string/about"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_logout"
+        android:orderInCategory="102"
         android:title="@string/action_logout"
         app:showAsAction="never" />
 

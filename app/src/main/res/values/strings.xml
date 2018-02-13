@@ -9,4 +9,7 @@
     <string name="userrole">fan</string>
     <string name="useremail">fan@fan.com</string>
     <string name="send_feedback">Send Feedback</string>
+    <string name="about">About</string>
+    <string name="ok">OK</string>
+    <string name="version">Version</string>
 </resources>

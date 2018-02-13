@@ -1,12 +1,16 @@
 package com.dev.fans.fanshub;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -171,6 +175,9 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.action_logout) {
             AuthUI.getInstance().signOut(this);
             return true;
+        } else if (id == R.id.action_showversion) {
+            showVersionAlertDialog();
+            return true;
         }
 
         return super.onOptionsItemSelected(item);
@@ -211,4 +218,34 @@ public class MainActivity extends AppCompatActivity
     void onSignedOutCleanup() {
     }
 
+    void showVersionAlertDialog() {
+
+        //get version code first
+        String versionName = getString(R.string.version);
+        try {
+            PackageInfo pInfo = this.getPackageManager().getPackageInfo(getPackageName(), 0);
+            versionName = pInfo.versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+
+
+        AlertDialog.Builder builder;
+        builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setTitle("FansHub")
+                .setMessage("Version. " + versionName + "\nDeveloped by developer fans.")
+                .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        //do nothing
+                    }
+                })
+                .setNeutralButton(R.string.send_feedback, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        FeedbackHelper.sendFeedback(MainActivity.this);
+                    }
+                })
+                .setIcon(R.mipmap.ic_launcher_round)
+                .setCancelable(true)
+                .show();
+    }
 }
