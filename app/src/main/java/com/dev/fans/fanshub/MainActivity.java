@@ -20,6 +20,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.crashlytics.android.Crashlytics;
 import com.firebase.ui.auth.AuthUI;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -82,6 +83,17 @@ public class MainActivity extends AppCompatActivity
         username = header.findViewById(R.id.username_tv);
         userrole = header.findViewById(R.id.userrole_tv);
         useremail = header.findViewById(R.id.useremail_tv);
+
+
+        //easter egg for crashing app
+        userrole.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                //crash the app
+                Crashlytics.getInstance().crash();
+                return true;
+            }
+        });
 
         //firebase authentication
         mAuthStateListener = new FirebaseAuth.AuthStateListener() {
